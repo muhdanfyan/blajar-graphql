@@ -11,7 +11,8 @@ const typeDefs = gql`
     }
 
     type Query {
-        getAllBooks: [Book]!
+        getAllBooks: [Book]!,
+        getBook(_id: ID!): Book
     }
 
     type Mutation {
@@ -30,7 +31,9 @@ const typeDefs = gql`
             description : String,
             release_year : Int,
             genre: String
-        ): Book!
+        ): Book!,
+        
+        deleteBook(_id: ID!): Boolean
     }
 `;
 
