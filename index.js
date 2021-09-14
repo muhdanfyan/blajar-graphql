@@ -1,17 +1,17 @@
-const {ApolloServer} = require('appolo-server');
+const {ApolloServer} = require('apollo-server');
 const mongoose = require('mongoose');
 
-const typeDefs = require('./schema');
+const typeDefs = require('./schema.js');
 const resolvers = require('./resolvers');
 
 // connection to mongodb
 mongoose.connect('mongodb://localhost:27017/blajargraphql', {
-    useNewParser : true,
-    useUnifiedTopology : true,
-    useFindAndModify : true
+    // useNewParser : true,
+    useUnifiedTopology : true
+    // useFindAndModify : true
 });
 
-const server = new AppoloServer({ typeDefs, resolvers});
+const server = new ApolloServer({ typeDefs, resolvers});
 
 server.listen().then(({ url })=> {
     console.log(`Server ready at ${url}`);
